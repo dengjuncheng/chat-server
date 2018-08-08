@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peanut.dao.mapper.FriendMapper">
+  <sql id="Base_Column_List" >
+    stu_id, other_id, is_delete
+  </sql>
+
+  <select id="selectFriendIds" resultType="java.lang.String">
+    SELECT other_id FROM user_rel WHERE stu_id=#{stuId} AND is_delete=0;
+  </select>
+  
+  <insert id="insert" parameterType="com.peanut.pojo.UserRel">
+    INSERT INTO user_rel
+    (stu_id, other_id, is_delete)
+    VALUES (#{stuId}, #{otherId}, #{isDelete})
+  </insert>
+</mapper>
